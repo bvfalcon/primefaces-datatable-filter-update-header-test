@@ -14,7 +14,15 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-
+            Random number (outside table): <h:outputText id="outside" value="#{testView.randomNumber}" />
+            <p:dataTable id="table1" value="#{testView.list}" var="item">
+                <f:facet name="header">Random number (header facet): <h:outputText id="header" value="#{testView.randomNumber}" /></f:facet>
+                <p:ajax event="filter" update=":frmTest:table1:header :frmTest:outside" />
+                <p:column field="id">#{item.id}</p:column>
+                <p:column field="name">#{item.name}</p:column>
+                <p:column field="artist">#{item.artist}</p:column>
+                <p:column field="released">#{item.released}</p:column>
+            </p:dataTable>
         </h:form>
 
     </h:body>

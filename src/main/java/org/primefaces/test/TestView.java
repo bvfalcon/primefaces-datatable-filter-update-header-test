@@ -2,6 +2,7 @@ package org.primefaces.test;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.math.BigDecimal;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.view.ViewScoped;
@@ -9,6 +10,7 @@ import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import lombok.Data;
 
@@ -34,4 +36,8 @@ public class TestView implements Serializable {
         ));
     }
 
+    public int getRandomNumber() {
+        System.out.println("Invoked at " + LocalTime.now());
+        return new Random().nextInt();
+    }
 }
